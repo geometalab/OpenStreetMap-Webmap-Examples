@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <style> #map_29be6993a8384ccabed5ad1a9a8722f9 {
+                position : relative;
+                width : 100.0%;
+                height: 100.0%;
+                left: 0.0%;
+                top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_29be6993a8384ccabed5ad1a9a8722f9" ></div>
+        
+</body>
+<script>    
+    
+
+            
+                var bounds = null;
+            
+
+            var map_29be6993a8384ccabed5ad1a9a8722f9 = L.map(
+                                  'map_29be6993a8384ccabed5ad1a9a8722f9',
+                                  {center: [47.3686,8.5392],
+                                  zoom: 13,
+                                  maxBounds: bounds,
+                                  layers: [],
+                                  worldCopyJump: false,
+                                  crs: L.CRS.EPSG3857
+                                 });
+            
+        
+    
+            var tile_layer_488b401bee9f480fbc97a0aa93056e27 = L.tileLayer(
+                'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
+                {
+  "attribution": null,
+  "detectRetina": false,
+  "maxZoom": 18,
+  "minZoom": 1,
+  "noWrap": false,
+  "subdomains": "abc"
+}
+                ).addTo(map_29be6993a8384ccabed5ad1a9a8722f9);
+        
+    
+
+            var marker_18df450c5720412d9e748989721a2f56 = L.marker(
+                [47.3686,8.5392],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_29be6993a8384ccabed5ad1a9a8722f9);
+            
+    
+
+                var icon_35dfcba19b1841a991c2abb3eb13ba61 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_18df450c5720412d9e748989721a2f56.setIcon(icon_35dfcba19b1841a991c2abb3eb13ba61);
+            
+    
+            var popup_7b85172df2314ce58c9c098d47a6e821 = L.popup({maxWidth: '300'});
+
+            
+                var html_58b5f8599fcd40b39a5c726aacbc648a = $('<div id="html_58b5f8599fcd40b39a5c726aacbc648a" style="width: 100.0%; height: 100.0%;">Zürich</div>')[0];
+                popup_7b85172df2314ce58c9c098d47a6e821.setContent(html_58b5f8599fcd40b39a5c726aacbc648a);
+            
+
+            marker_18df450c5720412d9e748989721a2f56.bindPopup(popup_7b85172df2314ce58c9c098d47a6e821);
+
+            
+        
+    
+
+            var circle_d569d006d7f040be9ebdc3bdadcd88d3 = L.circle(
+                [47.3688,8.553],
+                {
+  "bubblingMouseEvents": true,
+  "color": "blue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "blue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "opacity": 1.0,
+  "radius": 100,
+  "stroke": true,
+  "weight": 3
+}
+                ).addTo(map_29be6993a8384ccabed5ad1a9a8722f9);
+            
+    
+            var popup_856a01a20aa9430188ee274d46e9bc26 = L.popup({maxWidth: '300'});
+
+            
+                var html_2f1919899e4a4e109b189cbc9c416e56 = $('<div id="html_2f1919899e4a4e109b189cbc9c416e56" style="width: 100.0%; height: 100.0%;">Kantonsschule Hottingen</div>')[0];
+                popup_856a01a20aa9430188ee274d46e9bc26.setContent(html_2f1919899e4a4e109b189cbc9c416e56);
+            
+
+            circle_d569d006d7f040be9ebdc3bdadcd88d3.bindPopup(popup_856a01a20aa9430188ee274d46e9bc26);
+
+            
+        
+</script>
