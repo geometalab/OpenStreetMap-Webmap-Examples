@@ -50,3 +50,5 @@ crashlytics-build.properties
 fabric.properties
 
 __pycache__
+.ipynb_checkpoints
+venv
