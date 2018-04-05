@@ -1,0 +1,6 @@
+.idea
+folium/.idea
+
+folium/__pycache__
+folium/.ipynb_checkpoints
+folium/venv
