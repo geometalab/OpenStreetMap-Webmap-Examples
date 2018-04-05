@@ -1,5 +1,4 @@
-.idea
-folium/.idea
+.idea/
 
 folium/__pycache__
 folium/.ipynb_checkpoints
