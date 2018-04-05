@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de-ch">
+	<head>
+		<meta charset="UTF-8">
+		<title>Webmap Übung 1 - Leaflet</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+		<link rel="stylesheet" type="text/css" href="map.css"></link>
+	</head>
+	<body>
+		<p>Webmap Übung 1 - Leaflet</p>
+		<div id="simpleWebmap"></div>
+		
+		<div id="lfSwitch">
+			<a href="index_ueb_webmap1_ol.html" type="button">OL</a>
+		</div>
+		
+		<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+		<script src='https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
+		<script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="JS/config.js"></script>
+    
+		<script>
+			var map = L.map('simpleWebmap', {
+				center: [47.22320, 8.81744],
+				zoom: 17,
+				layers: [mapboxStreets]
+			});
+		</script>
+	</body>
+</html>

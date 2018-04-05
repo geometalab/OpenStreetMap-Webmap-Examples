@@ -1,0 +1,55 @@
+html {
+	font-family: verdana;
+}
+
+#mapid , #simpleWebmap, #simpleOlWebmap, #geoMap, #castleMap, #clusterMap, #overpassMap {
+	position: relative;
+	z-index: 50;
+	margin: 0 auto;
+	height: 720px;
+	width: 720px;
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+#lfSwitch {
+	position:absolute;
+	top:50px;
+	left:50px;
+	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.65);
+	border-radius: 4px;
+}
+
+.lfSwitch {
+	font-size: 12px;
+	border-color: rgba(0,0,0,0)
+}
+
+#olSwitch {
+	position:absolute;
+	top: 50px;
+	left:50px;
+	border-radius: 4px;
+	background-color: rgba(255, 255, 255, 0.4);
+	padding: 3px;
+	color: #fff;
+}
+
+.olSwitch {
+	font-size: 1.14em;
+	background-color: rgba(0, 60, 136, 0.5);
+	font-family: "Lucida Grande",Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+	color: #fff;
+}
+
+.olTitle {
+	padding-top: 20px;
+}
+
+#overpass-api-controls {
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+#overpass-api-controls a {
+    display: inline;
+}

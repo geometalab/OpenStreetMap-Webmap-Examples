@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de-de">
+	<head>
+		<title>Webmap &Uuml;bung 5 - Overpass Query</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="content-script-type" content="text/javascript" />
+		<meta http-equiv="content-style-type" content="text/css" />
+		<meta http-equiv="content-language" content="en" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+		<link rel="stylesheet" type="text/css" href="map.css"></link>
+		<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+		<script src='https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
+		<script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="JS/config.js"></script>
+		<script type="text/javascript" src="JS/osmtogeojson.js"></script>
+	</head>
+	<body>
+		<p>Webmap &Uuml;bung 5 - Overpass Query</p>
+		<div id="featureCount">Treffer: </div>
+		<div id="overpassMap"/>
+ 
+			<div class="leaflet-control-container">
+				<div class="leaflet-top leaflet-right">
+					<div id="overpass-api-controls" class="leaflet-bar leaflet-control">
+						<select id="queryDrop">
+							<option value="amenity=charging_station">amenity=charging_station</option>
+							<option value="historic=castle">historic=castle</option>
+							<option value="leisure=playground">leisure=playground</option>
+							<option value="natural=peak">natural=peak</option>
+						</select>
+						<input id="query-button" type="button" value="Laden">
+					</div>
+				</div>
+			</div>
+		<script>
+			var map = L.map('overpassMap', {
+				center: [47.22320, 8.81744],
+				zoom: 17,
+				layers: [mapboxStreets]
+			});
+			
+			function buildOverpassApiUrl(map, overpassQuery) {
+				var bounds = map.getBounds().getSouth() + ',' + map.getBounds().getWest() + ',' + map.getBounds().getNorth() + ',' + map.getBounds().getEast();
+				nodeQuery = 'node[' + overpassQuery + '](' + bounds + ');';
+				var wayQuery = 'way[' + overpassQuery + '](' + bounds + ');';
+				var relationQuery = 'relation[' + overpassQuery + '](' + bounds + ');';
+				var query = '?data=[out:json][timeout:25];(' + nodeQuery + wayQuery + relationQuery + ');out body geom;';
+				var baseUrl = 'http://overpass-api.de/api/interpreter';
+				var resultUrl = baseUrl + query;
+				return resultUrl;
+			}
+			
+			$('#query-button').click(function() {
+				$('*').css('cursor', 'progress');
+				$('#featureCount').html("Treffer: ");
+				
+				var $query = $('#queryDrop').val();
+				var overpassApiUrl = buildOverpassApiUrl(map, $query);
+				var featureCount = 0;
+				
+				$('*').css('cursor', 'default');
+				
+				$.get(overpassApiUrl, function(osmDataAsJson) {
+					var geojson = osmtogeojson(osmDataAsJson);
+					var layer = L.geoJson(geojson, {
+						style: function (feature) {
+							return {color: "#ff0000"};
+						},
+						filter: function (feature, layer) {
+							var isPolygon = (feature.geometry) && (feature.geometry.type !== undefined) && (feature.geometry.type === "Polygon");
+							if (isPolygon) {
+								feature.geometry.type = "Point";
+								var polygonCenter = L.latLngBounds(feature.geometry.coordinates[0]).getCenter();
+								feature.geometry.coordinates = [ polygonCenter.lat, polygonCenter.lng ];
+							}
+							return true;
+						},
+						onEachFeature: function (feature, layer) {
+							featureCount++;
+							var popupContent = "<table>";
+							var keys = Object.keys(feature.properties.tags);
+							popupContent = popupContent + "<tr><th>@id</th><td>" + feature.properties.type + "/" + feature.properties.id + "</td></tr>";
+							
+							keys.forEach(function (key) {
+								var elementContent = feature.properties.tags[key];
+								if (elementContent.startsWith("http")) {
+									popupContent = popupContent + "<tr><th>" + key + "</th><td>" + "<a href=" + elementContent + ">Link</a>" + "</td></tr>";
+								}
+								if (!popupContent.includes(elementContent)) {
+									popupContent = popupContent + "<tr><th>" + key + "</th><td>" + elementContent + "</td></tr>";
+								}
+								layer.bindPopup(popupContent);
+							});
+						}
+					}).addTo(map);
+					$('#featureCount').append(featureCount);
+				});
+			});
+		</script>
+	</body>
+</html>

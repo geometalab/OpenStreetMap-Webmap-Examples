@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de-de">		
+	<head>	
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Evaluation</title>
+   		<link rel="stylesheet" href="https://openlayers.org/en/v3.0.0/css/ol.css" type="text/css">
+   		<link rel="stylesheet" href="ol3-layerswitcher.css" type ="text/css">
+		<link rel="stylesheet" type="text/css" href="map.css"></link>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://openlayers.org/en/v4.0.1/build/ol.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="simpleOlWebmap">
+			<div id="popup" class="ol-popup"></div>
+		</div>
+		<div id="olSwitch">
+			<a href="index_ueb_webmap1.html" type="button" class="btn olSwitch">Lf</a>
+		</div>
+		<div class="title olTitle">
+			<a href="openlayers.html?lat=47.22320&lng=8.81744&zoom=17" class="olTitle">OpenLayers 3.0.0</a>
+		</div>
+		<script>
+			var map = new ol.Map({
+				target: 'simpleOlWebmap',
+				layers: [
+					new ol.layer.Tile({
+						source: new ol.source.OSM()
+					})
+				],
+				view: new ol.View({
+					center: ol.proj.fromLonLat([8.81744, 47.22320]),
+					zoom: 17
+				})
+			});
+		</script>
+	</body>
+</html>

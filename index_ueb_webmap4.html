@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de-de">
+	<head>
+		<title>Webmap &Uuml;bung 4 - Point Clustering</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="content-script-type" content="text/javascript" />
+		<meta http-equiv="content-style-type" content="text/css" />
+		<meta http-equiv="content-language" content="en" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+		<link rel="stylesheet" type="text/css" href="map.css"></link>
+		<link rel="stylesheet" type="text/css" href="Leaflet.markercluster-1.0.4/dist/MarkerCluster.css"></link>
+		<link rel="stylesheet" type="text/css" href="Leaflet.markercluster-1.0.4/dist/MarkerCluster.Default.css"></link>
+		<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+		<script src='https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
+		<script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="Leaflet.markercluster-1.0.4/dist/leaflet.markercluster.js"></script>
+		
+		<script type="text/javascript" src="JS/config.js"></script>
+		<script type="text/javascript" src="JS/geojsonHandler.js"></script>
+	</head>
+	<body>
+    <p>Webmap &Uuml;bung 4 - Point Clustering</p>
+		<div id="clusterMap"></div>
+		
+		<script>
+			var map = L.map('clusterMap', {
+				center: [47.22320, 8.81744],
+				zoom: 10,
+				layers: [mapboxSatellite, mapboxStreets]
+			});
+			
+			var castleJSON = "data/castles.geojson";
+			var castleIcon = "img/Castle.png";
+			
+			var castles = new L.LayerGroup(),
+				layerIcon = L.icon({
+					iconUrl: castleIcon,
+					iconSize: [18, 18]
+			}),
+			castles = loadGeojsonCluster(castleJSON, castles, layerIcon);
+			
+			castles.addTo(map);
+			
+			var overlayMaps = {
+				"Castles": castles
+			};
+			
+			L.control.layers(baseMaps, overlayMaps).addTo(map);
+		</script>
+	</body>
+</html>

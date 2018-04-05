@@ -1,0 +1,163 @@
+<!DOCTYPE svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox = "0 0 1441 987" version = "1.1">
+<!-- svg generated using QGIS www.qgis.org -->
+
+<div class="title-box"></div>
+<g id="OSM Standard" inkscape:groupmode="layer" inkscape:label="OSM Standard">
+<image y="0" x="0" xlink:href="svg_image_map.png" /></g>
+<g id="qgisviewbox" inkscape:groupmode="layer" inkscape:label="qgisviewbox" fill="none" >
+<path d="M 0,987 L 1441,987 L 1441,0 L 0,0 L 0,987 " />
+	<image class="event-point" data-event-id="0" x="756" y="103" xlink:href="castle-24.png"/>
+	<text id="x" font-size="50px" fill="red" x="756" y="155" class="name-text">TEST</text>
+	<image class="event-point" data-event-id="1" x="642" y="196" xlink:href="castle-24.png"/>
+	<image class="event-point" data-event-id="2" x="752" y="260" xlink:href="castle-24.png"/>
+	<image class="event-point" data-event-id="3" x="398" y="384" xlink:href="castle-24.png"/>
+	<image class="event-point" data-event-id="4" x="938" y="191" xlink:href="castle-24.png"/>
+	<image class="event-point" data-event-id="5" x="937" y="245" xlink:href="castle-24.png"/>
+	<image class="event-point" data-event-id="6" x="1101" y="421" xlink:href="castle-24.png"/>
+	<image class="event-point" data-event-id="7" x="991" y="721" xlink:href="castle-24.png"/>
+
+	<foreignObject id="InfoBox2" x="1101" y="421" width="250em" height="114em">
+		<span class="infoText" xmlns="http://www.w3.org/1999/xhtml">Mittelalterspektakel Hinwil</span>26.05.17 - 28.05.17<br></br>Hinwil ZH<br></br>http://www.turnei.ch<br></br>
+	</foreignObject>
+
+	<style type="text/css">
+		<![CDATA[
+            #eventmap-container {
+            padding-top: 50px;
+            width: 65%;
+            height: 100vh;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #InfoBox2 {
+            position: absolute;
+            visibility: visible;
+            z-index: 10;
+            background-color: #FFFFFF;
+            /*background:url(bg04-copy.gif) #F9F9F9 bottom right no-repeat;*/
+            width: 250px;
+            height: 114px;
+            padding: 10px;
+            margin: 0;
+            border-radius: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            line-height: 130%;
+            color: #5F5F5F;
+        }
+        #InfoBox2:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 15px 15px 0;
+            border-color: #FFFFFF transparent;
+            display: block;
+            width: 0;
+            z-index: 1;
+            bottom: -15px;
+            left: 129px;
+        }
+		.hidden {
+			display: none;
+		}
+		.visible {
+			display: block;
+		}
+        .title-box {
+            position: absolute;
+            z-index: 5;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            color: black;
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        }
+        span.infoText {
+            color: #000000;
+            font-weight: bold;
+            font-size: 14px;
+        }
+	]]></style>
+	<script type="text/javascript">
+		<![CDATA[
+		    var InfoBox = [
+                '<span class="infoText">Könix Album-Release-party<\/span><br><br>13.05.17<br><br>Schmiedestrasse 1 5400 Baden<br><br><a href="http://werkk-baden.ch/">http://werkk-baden.ch/</a><br><br>',
+                '<span class="infoText">Mittelalterfest Chuzenhöhli<\/span><br><br20.05.17<br><br>Zofingen AG<br><br><a href="https://mittelalterfest.ch">https://mittelalterfest.ch</a><br><br>',
+                '<span class="infoText">Seetaler Ritterspiele mit Mittelaltermarkt und Unterhaltung<\/span><br><br>20.05.17<br><br>Hochdorf<br><br><a href="http://www.seetalerritterspiele.ch/">http://www.seetalerritterspiele.ch/</a><br><br>',
+                '<span class="infoText">Mittelalterfest Schloss Laupen  Laupen 1317<\/span><br><br>25.05.17 - 28.05.17<br><br>Schloss Laupen  BE<br><br><a href="http://www.schloss.laupen.ch">http://www.schloss.laupen.ch</a><br><br>',
+                '<span class="infoText">Mittelalterfest Lachen<\/span><br><br>05.05.17 - 07.05.17<br><br>Seestrasse 2, 8853 Lachen SZ<br><br><a href="http://www.comites-feriati.ch">http://www.comites-feriati.ch</a><br><br>',
+			    '<span class="infoText">Ritterspiele mit Mittelaltermarkt und Gaukelei<\/span><br><br>13.05.17 - 14.05.17<br><br>Camping Trin, via Geraglia 2, 7016 Trin Mulin<br><br><a href="http://www.campingtrin.ch">http://www.campingtrin.ch</a><br><br>',
+			    '<span class="infoText">Mittelalterspektakel Hinwil<\/span><br><br>26.05.17 - 28.05.17<br><br>Hinwil ZH<br><br><a href="http://www.turnei.ch">http://www.turnei.ch</a><br><br>',
+                '<span class="infoText">La Spada nella Rocca<\/span><br><br>20.05.17 - 21.05.17<br><br>Auf der Burg Castelgrande, Bellinzona TI<br><br><a href="http://www.laspadanellarocca.ch">http://www.laspadanellarocca.ch</a><br><br>'
+            ];
+
+            function getEventTitleFromId(id) {
+                var eventElement = InfoBox[id];
+                var startIndex = eventElement.indexOf(">");
+                var tmp = eventElement.substring(startIndex + 1);
+                var endIndex = tmp.indexOf("<");
+                return tmp.substring(0, endIndex);
+		    }
+
+			document.addEventListener("click", function(e) {
+                if(e.target.classList.contains("event-point")) {
+                    var bbox = e.target.getBoundingClientRect();
+                    var centerX = bbox.width / 2 + bbox.left;
+                    var centerY = bbox.top - bbox.height - 15;
+
+                    BoxAnzeigen(centerX, centerY, Number(e.target.getAttribute("data-event-id")));
+                } else {
+                    BoxAusblenden();
+			    }
+            });
+
+            document.querySelectorAll(".event-point").forEach(function(e) {
+                var bbox = e.getBoundingClientRect();
+                var centerX = bbox.width / 2 + bbox.left;
+                var centerY = bbox.top;
+                var id = Number(e.getAttribute("data-event-id"));
+                displayElementText(centerX, centerY, getEventTitleFromId(id));
+		    });
+
+            function BoxAnzeigen(centerX, centerY, a) {
+                if (!InfoBox[a]) {
+                    InfoBox[a] = "Dieses PopUp (#" + a + ") ist nicht korrekt definiert<br>Die Beschreibung fehlt. Ein Array-Element mit dieser Index-Nummer wurde nicht definiert!";
+                }
+
+                var Inhalt = InfoBox[a];
+                var InfoBox2 = document.getElementById("InfoBox2");
+
+                var infoWidthToCenter = InfoBox2.offsetWidth / 2;
+
+                InfoBox2.innerXML = Inhalt;
+                InfoBox2.style.left = (centerX - infoWidthToCenter) + "px";
+                InfoBox2.style.top = centerY + "px";
+                console.log(InfoBox2);
+            }
+
+            function BoxAusblenden() {
+			    document.getElementById("InfoBox2").className = "hidden";
+            }
+
+            function displayElementText(centerX, centerY, text) {
+                var TitleBox = document.getElementsByClassName("title-box")[0];
+
+                var InfoBox2Height = document.getElementById("InfoBox2").offsetHeight;
+
+			    var titleBox = document.createElement("title-box");
+                titleBox.className = "title-box";
+                titleBox.innerXML = text;
+                TitleBox.appendChild(titleBox);
+
+                var titleWidthToCenter = titleBox.offsetWidth / 2;
+                var titleHeightToCenter = titleBox.offsetHeight;
+
+                /*
+			    titleBox.style.left = (centerX - titleWidthToCenter) + "px";
+			    titleBox.style.top = (centerY + InfoBox2Height - titleHeightToCenter - 10) + "px";
+			    */
+		    }
+	]]></script>
+</g>
+</svg>

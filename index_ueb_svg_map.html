@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HTML SVG Map - Mittelalter-Kalender</title>
+</head>
+<body>
+<div id="infoBox" style="top: -1000px"></div>
+<div class="title-box"></div>
+<p>HTML SVG Map - Mittelalter-Kalender</p>
+<div id="eventmap-container">
+	<object data="svg_image_map/svg_image_map.svg" type="image/svg+xml" id="eventmap">
+	</object>
+</div>
+<style type="text/css">
+	#eventmap-container {
+		padding-top: 50px;
+		width: 65%;
+		height: 100vh;
+	}
+
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	#infoBox {
+		position: absolute;
+		visibility: visible;
+		z-index: +10;
+		background-color: #FFFFFF;
+		/*background:url(bg04-copy.gif) #F9F9F9 bottom right no-repeat;*/
+		width: 250px;
+		height: 114px;
+		padding: 10px;
+		margin: 0;
+		border-radius: 10px;
+		box-shadow: 4px 4px 2px 0 rgba(0, 0, 0, 0.75);
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		line-height: 130%;
+		color: #5F5F5F;
+	}
+
+	#infoBox:after {
+		content: '';
+		position: absolute;
+		border-style: solid;
+		border-width: 15px 15px 0;
+		border-color: #FFFFFF transparent;
+		display: block;
+		width: 0;
+		z-index: 1;
+		bottom: -15px;
+		left: 129px;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	.visible {
+		display: block;
+	}
+
+	.title-box {
+		position: absolute;
+		z-index: +5;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		color: black;
+		text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+		white-space: nowrap;
+	}
+
+	.infoText {
+		color: #000000;
+		font-weight: bold;
+		font-size: 14px;
+	}
+</style>
+<script type="text/javascript">
+    document.getElementById("eventmap").addEventListener("load", function () {
+        var doc = this.getSVGDocument();
+        doc.addEventListener("click", function (e) {
+            if (e.target.classList.contains("event-point")) {
+                var boundingBox = e.target.getBoundingClientRect();
+                var centerX = boundingBox.width / 2 + boundingBox.left;
+                var centerY = boundingBox.top - boundingBox.height - 15;
+                document.getElementById("infoBox").className = "visible";
+                displayBox(centerX, centerY, Number(e.target.getAttribute("data-event-id")));
+            } else {
+                hideBox();
+            }
+        });
+
+        doc.querySelectorAll(".event-point").forEach(function (e) {
+            var boundingBox = e.getBoundingClientRect();
+            var centerX = boundingBox.width / 2 + boundingBox.left;
+            var centerY = boundingBox.top;
+            var id = Number(e.getAttribute("data-event-id"));
+            displayElementText(centerX, centerY, getEventTitleFromId(id));
+        });
+    });
+
+    var content = [
+        '<span class="infoText">Könix Album-Release-party<\/span><br><br>13.05.17<br><br>Schmiedestrasse 1 5400 Baden<br><br><a href="http://werkk-baden.ch/">http://werkk-baden.ch/</a><br><br>',
+        '<span class="infoText">Mittelalterfest Chuzenhöhli<\/span><br><br20.05.17<br><br>Zofingen AG<br><br><a href="https://mittelalterfest.ch">https://mittelalterfest.ch</a><br><br>',
+        '<span class="infoText">Seetaler Ritterspiele mit Mittelaltermarkt und Unterhaltung<\/span><br><br>20.05.17<br><br>Hochdorf<br><br><a href="http://www.seetalerritterspiele.ch/">http://www.seetalerritterspiele.ch/</a><br><br>',
+        '<span class="infoText">Mittelalterfest Schloss Laupen  Laupen 1317<\/span><br><br>25.05.17 - 28.05.17<br><br>Schloss Laupen  BE<br><br><a href="http://www.schloss.laupen.ch">http://www.schloss.laupen.ch</a><br><br>',
+        '<span class="infoText">Mittelalterfest Lachen<\/span><br><br>05.05.17 - 07.05.17<br><br>Seestrasse 2, 8853 Lachen SZ<br><br><a href="http://www.comites-feriati.ch">http://www.comites-feriati.ch</a><br><br>',
+        '<span class="infoText">Ritterspiele mit Mittelaltermarkt und Gaukelei<\/span><br><br>13.05.17 - 14.05.17<br><br>Camping Trin, via Geraglia 2, 7016 Trin Mulin<br><br><a href="http://www.campingtrin.ch">http://www.campingtrin.ch</a><br><br>',
+        '<span class="infoText">Mittelalterspektakel Hinwil<\/span><br><br>26.05.17 - 28.05.17<br><br>Hinwil ZH<br><br><a href="http://www.turnei.ch">http://www.turnei.ch</a><br><br>',
+        '<span class="infoText">La Spada nella Rocca<\/span><br><br>20.05.17 - 21.05.17<br><br>Auf der Burg Castelgrande, Bellinzona TI<br><br><a href="http://www.laspadanellarocca.ch">http://www.laspadanellarocca.ch</a><br><br>'
+    ];
+
+    function getEventTitleFromId(id) {
+        var eventElement = content[id];
+        var startIndex = eventElement.indexOf(">");
+        var tmp = eventElement.substring(startIndex + 1);
+        var endIndex = tmp.indexOf("<");
+        return tmp.substring(0, endIndex);
+    }
+
+    function displayBox(centerX, centerY, a) {
+        if (!content[a]) {
+            content[a] = "Dieses PopUp (#" + a + ") ist nicht korrekt definiert<br>Die Beschreibung fehlt. Ein Array-Element mit dieser Index-Nummer wurde nicht definiert!";
+        }
+        var infoBoxContent = content[a];
+        var infoBox = document.getElementById("infoBox");
+        var infoWidthToCenter = infoBox.offsetWidth / 2;
+
+        infoBox.innerHTML = infoBoxContent;
+        infoBox.style.left = (centerX - infoWidthToCenter) + "px";
+        infoBox.style.top = centerY + "px";
+    }
+
+    function displayElementText(centerX, centerY, text) {
+        var titleBoxContainer = document.getElementsByClassName("title-box")[0];
+        var infoBoxHeight = document.getElementById("infoBox").offsetHeight;
+        var titleBox = document.createElement("title-box");
+
+        titleBox.className = "title-box";
+        titleBox.innerHTML = text;
+        titleBoxContainer.appendChild(titleBox);
+
+        var titleWidthToCenter = titleBox.offsetWidth / 2;
+        var titleHeightToCenter = titleBox.offsetHeight;
+
+        titleBox.style.left = (centerX - titleWidthToCenter) + "px";
+        titleBox.style.top = (centerY + infoBoxHeight - titleHeightToCenter - 10) + "px";
+    }
+
+    function hideBox() {
+        document.getElementById("infoBox").className = "hidden";
+    }
+</script>
+</body>
+</html>
