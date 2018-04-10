@@ -1,5 +1,5 @@
 .idea/
 
-folium/__pycache__
-folium/.ipynb_checkpoints
-folium/venv
+folium_version/__pycache__
+folium_version/.ipynb_checkpoints
+folium_version/venv
